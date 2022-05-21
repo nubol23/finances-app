@@ -1,0 +1,22 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px;
+}
+
+.row {
+  display: flex;
+
+  margin-bottom: 4px;
+}
