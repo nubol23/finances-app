@@ -79,7 +79,7 @@ const LoginScreen = () => {
 
           <div className="row">
             {formik.isSubmitting ? (
-              <LoadingButton loading variant="outlined" />
+              <LoadingButton fullWidth loading variant="outlined" />
             ) : (
               <Button fullWidth variant="outlined" type="submit">
                 Login
