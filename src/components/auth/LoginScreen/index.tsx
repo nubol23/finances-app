@@ -1,5 +1,6 @@
 import React from "react";
 import "./login.scss";
+import "../../../common/styles/form.scss";
 import { Button, Paper, TextField, Typography } from "@mui/material";
 import { FormikHelpers, useFormik } from "formik";
 import * as Yup from "yup";
