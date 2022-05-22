@@ -4,6 +4,7 @@ import { Button, Paper, TextField, Typography } from "@mui/material";
 import { FormikHelpers, useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { LoadingButton } from "@mui/lab";
 
 type FormValues = {
   name: string;
@@ -128,14 +129,19 @@ const RegisterScreen = () => {
           />
 
           <div className="row">
-            <Button fullWidth variant="outlined" type="submit">
-              Registrar
-            </Button>
+            {formik.isSubmitting ? (
+              <LoadingButton loading variant="outlined" />
+            ) : (
+              <Button fullWidth variant="outlined" type="submit">
+                Registrar
+              </Button>
+            )}
 
             <Button
               fullWidth
               variant="outlined"
               onClick={() => navigate("/login")}
+              disabled={formik.isSubmitting}
             >
               Login
             </Button>
