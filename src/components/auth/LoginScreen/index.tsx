@@ -2,7 +2,7 @@ import React from "react";
 import "./login.scss";
 import "../../../common/styles/form.scss";
 import { Button, Paper, TextField, Typography } from "@mui/material";
-import { FormikHelpers, useFormik } from "formik";
+import { FormikHelpers, replace, useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
@@ -54,6 +54,8 @@ const LoginScreen = () => {
           email: decoded.email,
         };
         dispatch(login(payload));
+
+        navigate("/home", { replace: true });
       })
       .catch((error) => {
         console.log("Credenciales inválidas");
