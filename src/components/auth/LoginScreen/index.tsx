@@ -8,10 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import authApi from "../../../apis/authApi";
 import jwtDecode from "jwt-decode";
-import {AuthData, AuthResponse, TokenData} from "../../../common/types/authTypes";
-import {AxiosResponse} from "axios";
-import {useDispatch} from "react-redux";
-import {login} from "../../../store/slices/authSlice";
+import {
+  AuthData,
+  AuthResponse,
+  TokenData,
+} from "../../../common/types/authTypes";
+import { AxiosResponse } from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "../../../store/slices/authSlice";
 
 type FormValues = {
   email: string;
@@ -33,7 +37,6 @@ const LoginScreen = () => {
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-
     authApi
       .post("users/token/", {
         email: values.email,
@@ -54,7 +57,7 @@ const LoginScreen = () => {
       })
       .catch((error) => {
         console.log("Credenciales inválidas");
-      })
+      });
 
     setSubmitting(false);
   };

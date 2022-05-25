@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AuthData} from "../../common/types/authTypes";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AuthData } from "../../common/types/authTypes";
 
 interface AuthState {
   value: AuthData;
@@ -16,8 +16,8 @@ export const authSlice = createSlice({
     login: (state, action: PayloadAction<AuthData>) => {
       state.value = action.payload;
     },
-    logout: state => {
-      state.value = {}
+    logout: (state) => {
+      state.value = {};
     },
   },
 });

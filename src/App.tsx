@@ -3,8 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./routers/AppRouter";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./common/styles/colorTheme";
-import {Provider} from "react-redux";
-import {store} from "./store/store";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   return (

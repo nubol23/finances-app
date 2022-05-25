@@ -14,13 +14,13 @@ export interface AuthResponse {
 }
 
 export interface TokenData {
-  token_type: string,
-  exp: number,
-  iat: number,
-  jti: string,
-  user_id: string,
-  name: string,
-  email: string,
-  is_superuser: boolean,
-  is_staff: boolean,
+  token_type: string;
+  exp: number;
+  iat: number;
+  jti: string;
+  user_id: string;
+  name: string;
+  email: string;
+  is_superuser: boolean;
+  is_staff: boolean;
 }
