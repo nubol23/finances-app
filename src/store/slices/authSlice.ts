@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthData } from "../../common/types/authTypes";
+import { AuthData, RefreshTokenData } from "../../common/types/authTypes";
 
 interface AuthState {
   value: AuthData;
@@ -21,9 +21,12 @@ export const authSlice = createSlice({
       state.value = {};
       localStorage.setItem("session", "{}");
     },
+    refreshToken: (state, action: PayloadAction<RefreshTokenData>) => {
+      state.value.accessToken = action.payload.accessToken;
+    },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, refreshToken } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -8,6 +8,10 @@ export interface AuthData {
   email?: string;
 }
 
+export interface RefreshTokenData {
+  accessToken: string;
+}
+
 export interface AuthResponse {
   refresh: string;
   access: string;

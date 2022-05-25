@@ -1,5 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { AuthData } from "../common/types/authTypes";
+import { store } from "../store/store";
+import { refreshToken } from "../store/slices/authSlice";
 
 const onRequest = (config: AxiosRequestConfig) => {
   const session: AuthData = JSON.parse(
@@ -26,6 +28,10 @@ const onRequest = (config: AxiosRequestConfig) => {
           .then((refreshResponse) => {
             // Refreshed token
             session.accessToken = refreshResponse.data.access;
+            store.dispatch(
+              refreshToken({ accessToken: refreshResponse.data.access })
+            );
+
             config.headers!["Authorization"] = `Bearer ${session.accessToken}`;
             localStorage.setItem("session", JSON.stringify(session));
 
