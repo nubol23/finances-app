@@ -6,6 +6,12 @@ import { FormikHelpers, useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
+import authApi from "../../../apis/authApi";
+import jwtDecode from "jwt-decode";
+import {AuthData, AuthResponse, TokenData} from "../../../common/types/authTypes";
+import {AxiosResponse} from "axios";
+import {useDispatch} from "react-redux";
+import {login} from "../../../store/slices/authSlice";
 
 type FormValues = {
   email: string;
@@ -21,12 +27,35 @@ const LoginSchema = Yup.object().shape({
 
 const LoginScreen = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = (
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    console.log(values);
+
+    authApi
+      .post("users/token/", {
+        email: values.email,
+        password: values.password,
+      })
+      .then((response: AxiosResponse<AuthResponse>) => {
+        const decoded = jwtDecode<TokenData>(response.data.access);
+        const payload: AuthData = {
+          accessToken: response.data.access,
+          refreshToken: response.data.refresh,
+          issuedAt: decoded.iat,
+          expiresAt: decoded.exp,
+          userId: decoded.user_id,
+          name: decoded.name,
+          email: decoded.email,
+        };
+        dispatch(login(payload));
+      })
+      .catch((error) => {
+        console.log("Credenciales inválidas");
+      })
+
     setSubmitting(false);
   };
 

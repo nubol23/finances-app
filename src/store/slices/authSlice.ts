@@ -1,14 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-
-interface AuthData {
-  accessToken?: string;
-  refreshToken?: string;
-  issuedAt?: number;
-  expiresAt?: number;
-  userId?: string;
-  name?: string;
-  email?: string;
-}
+import {AuthData} from "../../common/types/authTypes";
 
 interface AuthState {
   value: AuthData;
