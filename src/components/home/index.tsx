@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
+import api from "../../apis/api";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,10 @@ const Home = () => {
 
   useEffect(() => {
     console.log(":D");
+
+    api.get("users/test/").then((response) => {
+      console.log(response.data);
+    });
   }, []);
 
   return (
