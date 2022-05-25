@@ -6,7 +6,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  value: {},
+  value: JSON.parse(localStorage.getItem("session") || "{}"),
 };
 
 export const authSlice = createSlice({
@@ -15,9 +15,11 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action: PayloadAction<AuthData>) => {
       state.value = action.payload;
+      localStorage.setItem("session", JSON.stringify(action.payload));
     },
     logout: (state) => {
       state.value = {};
+      localStorage.setItem("session", "{}");
     },
   },
 });
