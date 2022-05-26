@@ -8,10 +8,15 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../../../store/slices/authSlice";
 
-const UserComponent = ({ actions }: { actions: string[] }) => {
+const UserComponent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const session = useSelector((state: RootState) => state.auth.value);
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
@@ -47,11 +52,19 @@ const UserComponent = ({ actions }: { actions: string[] }) => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {actions.map((action) => (
-          <MenuItem key={action} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{action}</Typography>
-          </MenuItem>
-        ))}
+        <MenuItem onClick={handleCloseUserMenu}>
+          <Typography textAlign="center">Mi cuenta</Typography>
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => {
+            dispatch(logout());
+            handleCloseUserMenu();
+            navigate("/login");
+          }}
+        >
+          <Typography textAlign="center">Cerrar sesión</Typography>
+        </MenuItem>
       </Menu>
     </Box>
   );

@@ -8,7 +8,6 @@ import ExtendedMenu from "./ExtendedMenu/Index";
 import UserComponent from "./UserComponent/Index";
 
 const pages = ["Resumen", "Detalle", "Registrar"];
-const actions = ["Mi cuenta", "Cerrar sesión"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -43,7 +42,7 @@ const Navbar = () => {
               handleCloseNavMenu={handleCloseNavMenu}
             />
 
-            <UserComponent actions={actions} />
+            <UserComponent />
           </Toolbar>
         </Container>
       </AppBar>
