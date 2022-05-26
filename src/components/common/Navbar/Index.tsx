@@ -2,14 +2,16 @@ import React from "react";
 import { AppBar, Container, CssBaseline, Toolbar } from "@mui/material";
 import "./navbar.scss";
 import ExtendedTitle from "./ExtendedTitle/Index";
-import CompressedMenu from "./CompressedMenu/Index";
-import CompressedTitle from "./CompressedTitle/Index";
 import ExtendedMenu from "./ExtendedMenu/Index";
 import UserComponent from "./UserComponent/Index";
 
-const pages = ["Resumen", "Detalle", "Registrar"];
-
 const Navbar = () => {
+  const pages = [
+    { text: "Resumen", to: "/summary" },
+    { text: "Detalle", to: "" },
+    { text: "Registrar", to: "" },
+  ];
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
