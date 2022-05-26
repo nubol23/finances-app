@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import LoginScreen from "../components/auth/LoginScreen";
 import "./app_router.scss";
 import RegisterScreen from "../components/auth/RegisterScreen";
-import Home from "../components/home";
 import PublicRouter from "./PublicRouter";
 import PrivateRouter from "./PrivateRouter";
 import DashboardRouter from "./DashboardRouter";
