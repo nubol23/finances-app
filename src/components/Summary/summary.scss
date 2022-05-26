@@ -1,0 +1,20 @@
+.base-page {
+  display: flex;
+  flex-direction: column;
+
+  // Grow to fit available space
+  flex: 1;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fab-container {
+  margin-top: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}

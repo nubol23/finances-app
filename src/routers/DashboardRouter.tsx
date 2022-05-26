@@ -6,7 +6,7 @@ import Summary from "../components/Summary/Index";
 
 const DashboardRouter = () => {
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <Navbar />
 
       <Routes>
